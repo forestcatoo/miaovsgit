@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>验证输入表单</title>
+    <style>
+        text-align: left;
+    }
+
+    </style>
+</head>
+<body>
+    <div style="padding: 20px;">
+        请输入qq号码：
+        <input type="text">
+        <input type="button" value="判断">
+        <div class="inner" id="inner">
+            
+        </div>
+    </div>
+
+    <script>
+        window.onload= function(){
+            var oInner = document.getElementById("inner");
+            var aInput = document.getElementsByTagName("input");
+            var oText = aInput[0];
+            var oBtn = aInput[1];
+            var sNum = 0;
+            oBtn.onclick = function(){
+                sNum = oText.value;
+                // alert(sNum.charAt(0)==0)
+
+                if (sNum=="") {
+                    alert("请输入")
+                }
+                else if (isNaN(sNum)) {
+                    alert("输入的不是数字");
+                }
+                else if(sNum.charAt(0) == 0){
+                    alert("开头不能有0")
+                }
+                else if(parseInt(oText.value) !== parseFloat(oText.value)){
+                    alert("不能输入小数")
+                }
+                else if(parseInt(oText.value)>4999&&parseInt(oText.value)<999999999){
+                    alert(parseInt(oText.value)+"符合要求")
+                }
+                else if(parseInt(oText.value)<=4999){
+                    alert("输入的不够5个数字")
+                }
+                else if(parseInt(oText.value)>=999999999){
+                    alert("输入超过10个数字")
+                }
+            }
+        }
+        
+    </script>
+</body>
+</html>

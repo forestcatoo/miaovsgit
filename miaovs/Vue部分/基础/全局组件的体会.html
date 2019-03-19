@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>全局组件的概念</title>
+</head>
+<body>
+    <div id="app"></div>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+        // 注册公共的全局组件，能省略很多的components:{xx:xx}
+        Vue.component('my-btn',{
+            template:`<button style= "background:pink;">
+                漂亮的按钮
+            </button>`
+        })
+
+        var MyHeader = {
+            template:`<div>我是header组件
+                <my-btn/>
+            </div>`
+        };
+        var MyFooter = {
+            template:`<div>我是footer组件
+                <my-btn/>
+            </div>`
+        };
+
+        var App = {
+            components:{
+                'my-header' : MyHeader,
+                'my-footer': MyFooter,
+            },
+            template: `<div>
+                <my-header></my-header><hr/>
+                <my-footer></my-footer>
+                <hr/>
+                App入口组件使用全局组件如下
+                <my-btn/>
+            </div>`
+        };
+
+         new Vue({
+            el: '#app',
+            // 声明子组件
+            components: {//声明要用的组件们 key是组件名，value是组件对象
+                app : App
+            },
+            template : '<app/>',
+        });
+
+    </script>
+
+</body>
+</html>

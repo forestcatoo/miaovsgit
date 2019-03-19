@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>slot插槽</title>
+    <style>
+    ul{margin: 20px;padding: 0;}
+    ul li{
+        list-style: none;
+        float: left;
+        width: 33%;
+        height: 260px;
+        border: 1px solid #eee;
+        background: #fddc71;
+        text-align: center;
+    }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+        var MyLi = {
+            // slot是留坑，外部填入内容
+            template:`<li><slot></slot></li>`
+        }
+        Vue.component('my-li',MyLi);    
+        // 总结：slot是父组件传递的dom结构
+        // vue提供的内置组件<slot></slot>
+        // 入口组件
+        var App = {
+            template: `<div>
+                <ul>
+                    <my-li>
+                        <button>点击吧</button>
+                    </my-li>
+                    <my-li>2</my-li>
+                    <my-li>3</my-li>
+                    <my-li>4</my-li>
+                    <my-li>5</my-li>
+                    <my-li>6</my-li>
+                    <my-li>7</my-li>
+                    <my-li>8</my-li>
+                    <my-li>9</my-li>
+                </ul>
+            </div>`
+        };
+
+         new Vue({
+            el: '#app',
+            components: {
+                app : App
+            },
+            template : '<app/>',
+        });
+
+    </script>
+
+</body>
+</html>

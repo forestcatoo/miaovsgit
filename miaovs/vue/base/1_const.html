@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>const let</title>
+</head>
+<body>
+	<script>
+	//使用var声明变量 会被覆盖 而const不会
+	/*
+		let
+		1、在一个作用域中 不能重复声明变量
+		2、没有变量提升
+		3、块级作用域
+
+		
+		const
+		常量 声明变量赋值 变量不能被重新赋值
+
+	*/
+	// console.log(miaov); //变量提升
+
+	// var miaov = 'chen';
+	// var miaov ='123'; //后声明的var会覆盖前面的
+
+	// console.log(miaov);
+
+	// let leo =123;
+	// let leo =456;
+	// console.log(leo); //报错，重复定义不允许
+
+	// if (flase) {
+	// 	var mi = 'chen';
+	// 	let ni = 123; //只能在大括号里面使用 
+	// };
+	// console.log(mi); //undefined· 变量提升了
+	// console.log(ni); //报错 if作用域里面外部不能访问
+
+	// for(let i =0;i<3;i++){
+	// 	document.addEventListener("click",function(){
+	// 		alert(i);
+	// 	});
+	// }
+
+	</script>
+</body>
+</html>

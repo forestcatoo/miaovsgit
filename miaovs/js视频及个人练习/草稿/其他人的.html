@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改文本框值</title>
+    <style>
+    ul,h3,p{margin: 0;padding:0;}
+    li{list-style:none;}
+    #box{width: 600px;margin:0 auto;}
+    #p1{display: inline-block;margin-right: 15px;}
+    li,h3{height: 30px;width: 600px;font-size: 18px;line-height: 30px;
+        border:1px solid green;text-indent:25px;}
+    #title{background: green;}
+    .btn{display: none;}
+    </style>
+
+    <script>
+    window.onload = function(){
+        var aUl =document.getElementById('list');
+        var aLi = aUl.getElementsByTagName('li');
+
+    for(var i=0; i<aLi.length; i++){
+
+        fn1(aLi[i]);
+    }
+
+
+    function fn1(li){
+        var aSpan = li.getElementsByTagName('span');
+        var aBtn = li.getElementsByTagName('input');
+        
+        aBtn[3].onclick =function(){
+            aSpan[0].className='btn';
+            aBtn[3].className='btn';
+
+            for( var i=0;i<3;i++){
+                aBtn[i].className='';
+            }
+        }
+        aBtn[1].onclick =function(){
+            aSpan[0].className='';
+            aBtn[3].className='';
+
+            for( var i=0;i<3;i++){
+                aBtn[i].className='btn';
+            }
+            aSpan[0].innerHTML=aBtn[0].value;
+        }
+
+        aBtn[2].onclick =function(){
+            aSpan[0].className='';
+            aBtn[3].className='';
+            for( var i=0;i<3;i++){
+                aBtn[i].className='btn';
+            }
+            aSpan[0].innerHTML='妙味远程课堂';
+        }
+
+    }
+}
+    </script>
+</head>
+<body>
+    <div id='box'>
+        <h3 id="title">分类名称</h3>
+        <ul id="list">
+        <li>
+            <span>妙味远程课堂</span>
+            <input class="btn" type="text" value="妙味远程课程">
+            <input class="btn" type="button" value="保存">
+            <input class="btn" type="button" value="取消">
+            <input  type="button" value="按钮">
+        </li>
+        <li>
+            <span >妙味实体课程</span>
+            <input class="btn" type="text" value="妙味远程课程">
+            <input class="btn" type="button" value="保存">
+            <input class="btn" type="button" value="取消">
+            <input  type="button" value="按钮">
+        </li>
+        </ul>
+    </div>
+</body>
+</html>

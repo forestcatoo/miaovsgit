@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js-图片切换</title>
+	<style>
+		#content {
+			width: 400px;
+			height: 400px;
+			margin: 40px auto 0;
+			position: relative;
+			border: 10px solid #ccc;
+		}
+		#bcg {
+			width: 400px;
+			height: 60px;
+			margin: 20px auto 20px;
+			border-top: 1px solid #000;
+			/*position: relative;*/
+		}
+		#bcg span {
+			margin: 10px auto;
+			display: block;
+			text-align: center;
+
+		}
+		#bcg p {
+			/*margin-bottom: 20px;*/
+			text-align: center;
+		}
+		#content a {
+			width: 40px;
+			height: 40px;
+			background: #000;
+			border: 5px solid #fff;
+			position: absolute;
+			top: 175px;
+			text-align: center;
+			text-decoration: none;
+			line-height: 40px;
+			font-size: 30px;
+			font-weight: bold;
+			color: #fff;
+			opacity: 0.5;
+		}
+		#content a:hover {
+			opacity: 0.9
+		}
+		#prev {
+			left: 10px;
+		}
+		#next {
+			right: 10px;
+		}
+		#text {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			text-align: center;
+			width: 400px;
+			height: 30px;
+			line-height: 30px;
+			color: #fff;
+			background: #000;
+			margin: 0;
+			opacity: 0.7;
+
+		}
+		#span1 {
+			position: absolute;
+			top: 0;
+			left: 0;
+			text-align: center;
+			width: 400px;
+			height: 30px;
+			line-height: 30px;
+			color: #fff;
+			background: #000;
+			margin: 0;
+			opacity: 0.7;
+		}
+		#img1 {
+			width: 400px;
+			height: 400px;
+		}
+	</style>
+	<script>
+	window.onload = function (){
+		var oBtn1 = document.getElementById('btn1');
+		var oBtn2 = document.getElementById('btn2');
+		var oP1 = document.getElementById('p1');
+		var oPrev = document.getElementById('prev');
+		var oNext = document.getElementById('next');
+		var oText = document.getElementById('text');
+		var oSpan = document.getElementById('span1');
+		var oImg = document.getElementById('img1');
+
+		var arrUrl = ['img/1.jpg', 'img/2.jpg', 'img/3.jpg', 'img/4.jpg'];
+		var arrText = ['文字一', '文字二', '文字三', '文字四'];
+		var num = 0;
+
+		//初始化状态
+		function fnTab (){
+			oText.innerHTML = arrText[num];
+			oSpan.innerHTML = num + 1 + '/' + arrUrl.length;
+			oImg.src = arrUrl[num];
+		};
+		fnTab();
+
+
+		oBtn1.onclick = function (){
+			oBtn1.style.background = 'blue';
+			oPrev.onclick = function (){
+			num --;
+			if( num == -1 ){
+				num = arrText.length - 1;
+			};
+			fnTab();
+		};
+
+		oNext.onclick = function (){
+			num ++;
+			if( num == arrText.length ){
+				num = 0;
+			};
+			fnTab();
+		};
+		};
+		oBtn1.onmouseout = function (){
+			oBtn1.style.background = 'none';
+		};
+
+		oBtn2.onclick = function (){
+			oBtn2.style.background = 'blue';
+			oP1.innerHTML = '图片只能到最后一张或第一张切换';
+			oPrev.onclick = function (){
+				if( num > -1 ){
+					num --;
+				}
+			if( num == -1 ){
+				alert('这已经是第一张了，不能再切换了。。');
+			} else{
+				fnTab();
+			};
+		};
+
+		oNext.onclick = function (){
+			if( num < 4 ){
+				num ++;
+			} 
+			if( num == arrText.length ){
+				alert('这是最后一张了。。');
+			} else{
+				fnTab();
+			};
+		};
+		};
+		oBtn2.onmouseout = function (){
+			oBtn2.style.background = 'none';
+		};
+	};
+	</script>
+</head>
+<body>
+	<div id="bcg">
+		<span>
+			<input id="btn1" type="button" value="循环切换">
+			<input id="btn2" type="button" value="顺序切换">
+		</span>
+		<p id="p1">图片可以从最后一张跳到第一张循环切换</p>
+	</div>
+	<div id="content">
+		<a id="prev" href="#"><</a>
+		<a id="next" href="#">></a>
+		<p id="text">文字加载中</p>
+		<span id="span1">图片数量加载中</span>
+		<img id="img1" src="" alt="">
+	</div>
+</body>
+</html>

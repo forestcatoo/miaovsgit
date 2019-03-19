@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数参数解构赋值</title>
+</head>
+<body>
+
+	<script>
+		//传统传对象参数
+		// function fn(option){
+		// 	console.log(option.a);
+		// 	console.log(option.b);
+		// 	console.log(option.c);
+		// }
+
+		// 解构传对象参数
+		// function fn({a,b,c}){
+		// 	console.log(a);
+		// 	console.log(b);
+		// 	console.log(c);
+		// }
+
+		//默认参数 赋值
+		function fn({a,b,c,d="get"}){
+			console.log(a);
+			console.log(b);
+			console.log(c);
+			console.log(d); //如果实参中有d则用实参的，否则用默认的
+		}
+
+		fn({
+			a:1,
+			b:2,
+			c:3
+		})
+
+	</script>
+</body>
+</html>

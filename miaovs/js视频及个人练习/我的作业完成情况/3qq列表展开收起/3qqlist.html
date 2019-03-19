@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模仿qq列表</title>
+</head>
+<style>
+	div,p,li,ul,h2{margin: 0;padding: 0;}
+	ul{list-style: none;}
+	.content{
+		width: 390px;
+		height: auto;
+		margin: 0 auto;
+		font-size: 14px;
+	}
+	.list{
+		
+	}
+	.list h2{
+		height: 36px;
+		line-height: 36px;
+		background: #95bbab;
+		font-weight: normal;
+		cursor: pointer;
+	}
+	.list h2.active{
+		background: pink;
+	}
+	.list .lis{
+		text-indent: 10px;
+	}
+	.list .lis ul{
+		cursor: pointer;
+		display: none;
+	}
+	.list .lis li{
+		position: relative;
+		height: 30px;
+		line-height: 30px;
+		background: #eee;
+		border-bottom: 1px solid #333;
+		text-indent: 42px;
+	}
+	.list .lis li.active{
+		background: yellow;
+	}
+	.list .lis li.active::before{
+		content: "-";
+		position: absolute;
+		left: -10px;
+	}
+</style>
+<script>
+// ！！！！！！！！！！！！！！！！！！！！！！！！！！********
+	// 未实现点击列表中单个人名字，如果不亮时点击时则高亮，如果高亮则取消。
+	window.onload = function(){
+		var oUl = document.getElementById("list");
+		var aH2 = oUl.getElementsByTagName("h2");
+		var aUl = oUl.getElementsByTagName("ul");
+		var aLi = null;
+		var liArr = [];
+		var num = 0;
+		var onOff = false; //空置点击高亮切换的 判断值
+
+		for(var i=0; i<aH2.length;i++){
+			aH2[i].index = i;
+			aH2[i].onclick = function(){
+				// for(var i=0; i<aUl.length;i++){
+				// 	aUl[i].style.display = "none";
+				// 	aH2[i].className="";
+				// }
+				aUl[num].style.display = "none";
+				aH2[num].className="";
+
+				if(this.className===""){
+					aUl[this.index].style.display = "block";
+					this.className = "active";
+				}else{
+					aUl[this.index].style.display = "none";
+					this.className = "";
+				}
+				num = this.index;
+			};
+		}
+
+
+		for( var i=0; i<aUl.length; i++){
+			aLi = aUl[i].getElementsByTagName("li");
+			for(var j=0; j<aLi.length; j++){
+				liArr.push(aLi[j]);
+			}
+		}
+		// console.log(liArr);
+
+		for(var i=0; i<liArr.length;i++){
+			liArr[i].onclick = function(){
+
+				for( var i=0;i<liArr.length;i++){
+
+					liArr[i].className = "";
+				}
+				// this.className="active";
+
+				// if (this.className=="") {
+				// 	this.className = "active";
+				// }
+				// else if(this.className == "active"){
+				// 	this.className="";
+				// }
+				if (!onOff) {
+					this.className="active";
+					onOff == true;
+				}
+				else{
+					this.className="";
+				}
+			}
+		}
+	}
+</script>
+<body>
+	<div class="content" id="con">
+		<ul class="list" id="list">
+			<li class="lis">
+				<h2>我的好友</h2>
+				<ul>
+					<li>陈小喵</li>
+					<li>杜可可</li>
+					<li>刘呼呼</li>
+				</ul>
+			</li>
+			<li class="lis">
+				<h2>常联系的</h2>
+				<ul>
+					<li>mua啦啦</li>
+					<li>小燕燕</li>
+				</ul>
+			</li>
+			<li class="lis">
+				<h2>黑名单</h2>
+				<ul>
+					<li>赵茜茜</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

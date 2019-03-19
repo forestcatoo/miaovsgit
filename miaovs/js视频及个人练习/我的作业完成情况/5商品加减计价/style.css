@@ -1,0 +1,150 @@
+             *{
+                margin: 0;
+                padding: 0;
+                font-family: "微软雅黑";
+             }
+             #box{
+                width: 256px;
+                height: auto;
+                background-color:#dee7e7 ;
+                margin: 50px auto;
+                box-shadow: 2px 2px  5px #999;
+                padding: 10px 6px;
+             }
+             
+             .line{
+                width: 256px;
+                height: 28px;
+                color: #103142;
+             
+             }
+             .line span{
+                float:left;
+                width: 37px;
+                height: 27px;
+                font-size: 12px;
+                border: 1px solid #94bdd6;
+                line-height: 27px;
+                text-align: center;
+                cursor: pointer;
+             }
+             .line span:nth-child(3){
+                border-left: none;
+                border-right: none;
+             }
+              .active{
+                background-color: #fff;
+                border-bottom: none;
+             }
+             .line p:first-child{
+                width: 141px;
+                height: 27px;
+                font-size: 20px;
+                font-family: '宋体';
+                border-top-color: transparent;
+                border-left: none;
+                border-right: none;
+                float: left;
+             }
+             .line span {
+                float: left;
+             }
+              .line span img {
+                margin-left: 17px;
+                
+              }
+              /*标题结束*/
+              ul{
+                width: 256px;
+                list-style: none;
+                height: auto;
+                font-size: 12px;
+                position: relative;
+                top: 0;
+                left: 0;
+              }
+              ul li{
+                
+                
+                padding: 0 5px;
+                position: relative;
+                top: 0;
+                left: 0;
+              }
+              .more{
+                height: 27px;
+              }
+              .xj{
+                height: 27px;
+                border-bottom: 1px dashed #fff;
+              }
+              .xj span{
+                width: 18px;
+                height: 14px;
+                text-align: center;
+                color: #fff;
+                background-color: #21638c;
+                display: block;
+                position: relative;
+                top: 7px;
+                line-height: 13px;
+                float: left;
+              }
+              .xj p{
+                float: left;
+                line-height: 27px;
+                margin-left: 10px;
+              }
+              .move{
+                width: 256px;
+                height: 80px;
+                background-color: #fff;
+                position: relative;
+                top: 0;
+                left:-5px;
+                display: none;
+              }
+              .move img{
+                margin-top: 8px;
+            margin-left: 15px;
+                border: 2px solid #21638c;
+                float: left;
+              }
+              .move p{
+                width: 120px;
+                float: left;
+                margin-top: 8px;
+                margin-left: 7px;
+              }
+              .move span{
+                width: 18px;
+                height: 14px;
+                text-align: center;
+                color: #fff;
+                background-color: #21638c;
+                display: block;
+                position: relative;
+                top: 7px;
+                line-height: 13px;
+                left: 5px;
+                float: left;
+              }
+             
+              .move strong img{
+                border: none;
+                float: right;
+                margin-right: 5px;
+                display: block;
+              }
+              a{
+                padding-top: 5px;
+                height: 27px;
+                
+              }
+              a:link,a:visited,a:hover,a:active{
+                color: #000;
+                font-size: 12px;
+                text-decoration: none;
+                position: absolute;
+                right: 5px;
+              }

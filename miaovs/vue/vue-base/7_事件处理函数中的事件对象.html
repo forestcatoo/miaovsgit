@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+       <button @click="test">测试事件</button>
+       <button @click="test2(112)">测试事件</button>
+       <button @click="test3($event,12)">测试事件</button>
+
+    </div>
+
+    <script>
+        /*
+            v-on 简写为 @
+            当在模板中给事件的方法传参，需要手动使用$event把事件对象传给方法
+        */
+        
+        let vm = new Vue({
+            el:'#app',
+            data: function(){ 
+                return{
+                }
+            },
+            methods:{
+                test(ev){
+                    console.log(this);
+                    console.log(ev); //函数不传参的情况下，ev是事件对象
+                },
+                test2(ev){ //上述函数传了一个参数，所以这里的参数是形参不是事件对象
+                    console.log(ev);
+                },
+                test3(ev,param){ // 在html中将事件对象以$event形式传递
+                    console.log(ev);
+                    console.log(param)
+                }
+            },
+        });
+    </script>
+</body>
+</html>

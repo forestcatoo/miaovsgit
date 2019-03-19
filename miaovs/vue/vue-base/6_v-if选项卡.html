@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <script src="./vue.js"></script>
+    <style>
+    .red{background: red;}
+    #app div{display: none;}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <input
+             v-for="(item,i) in tabData" 
+             type="button" 
+             :value="item.title"
+             :class="{red:i===index}"
+             @click="tabHandle(i)"
+        />
+        <div :style="{display: j===index ? 'block':'none'}"  v-for="(item,j) in tabData">
+            <p v-for ="option in item.list">{{option.subtitle}}</p>
+        </div>
+<!--         <div>
+            <p>体育列表拿了冠军</p>
+        </div>
+        <div>娱乐列表</div> -->
+    </div>
+
+    <script>
+        // var n = 0;
+        // input[n].className = 'red';
+        // div[n].style.display = 'block'
+
+        /*
+            可控制 class
+                :class="{class名字：表达式}"
+                表达式为true就添加class，为false就不添加
+            控制style
+                :style ="{样式名：样式值}"
+            vue中的事件
+                语法 v-on:事件名 = '事件处理函数'
+
+                需要传参 v-on:事件名 = '事件处理函数(参数)'
+        */
+        let tabData =[
+            {
+                title:'新闻',
+                list:[
+                    {
+                        subtitle:'今天天气好1'
+                    },
+                    {
+                        subtitle:'今天天气好2'
+                    }
+                ]
+            },
+            {
+                title:'娱乐',
+                list:[
+                    {
+                        subtitle:'结婚了'
+                    },
+                    {
+                        subtitle:'剩了'
+                    }
+                ]
+            },
+            {
+                title:'体育',
+                list:[
+                    {
+                        subtitle:'手上'
+                    },
+                    {
+                        subtitle:'拿冠军'
+                    }
+                ]
+            }
+        ];
+
+        let vm = new Vue({
+            el:'#app',
+            data: function(){ 
+                return {
+                    tabData,
+                    index:0
+                }
+            },
+            methods:{
+                tabHandle(num){
+                    this.index = num;
+                }
+            },
+        });
+    </script>
+</body>
+</html>

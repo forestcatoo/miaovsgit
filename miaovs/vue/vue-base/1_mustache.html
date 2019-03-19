@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>双向数据绑定</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+       <input type="text" v-model ="message"> 
+       <input type="checkbox" v-model="isCheck">
+       <p>{{message}}</p>
+    </div>
+
+    <script>
+        var message = 'hello chen'
+        var vm = new Vue({
+            el:'#app',
+            data: function(){
+                return {
+                    message,  //message:message
+                    isCheck:true
+                }
+            },
+            
+            methods:{
+
+            }
+        })
+    </script>
+    
+</body>
+</html>

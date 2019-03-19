@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数扩展</title>
+</head>
+<body>
+
+	<script>
+	// function fn(...arr){ //re参数。把实参放在数组中
+	// 	// console.log(arguments);
+	// 	console.log(arr); //这里的arr是真是的数组，具有数组的方法
+	// }
+
+	// fn(1);
+	// fn(1,2);
+	// fn(1,2,4);
+
+	// 如果第一个参数是确定 后续的参数不确定
+	function fn(a,...arr){ //re参数。把实参放在数组中
+		// console.log(arguments);
+		console.log(a);  
+		console.log(arr); //这里的arr是真是的数组，具有数组的方法
+	}
+
+	fn(1);
+	fn(1,2);
+	fn(1,2,4);
+
+	</script>
+	
+</body>
+</html>

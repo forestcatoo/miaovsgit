@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <title>点击改变样式</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>请为下面的h1设置样式：</h1>
+  <a href="javascript:;" title="点击设置" id="setup">点击设置</a>
+  <div class="demo js-demo" style="width: 100px;height: 100px;background: none;"></div>
+  <div class="dialog">
+    <div class="mask"></div>
+    <div class="pannel">
+      <dl class="background-color">
+    <dt>请选择背景色：</dt>
+      <dd>红</dd>
+      <dd>黄</dd>
+      <dd>蓝</dd>
+    </dl>
+    <dl class="width">
+      <dt>请选择宽(px)：</dt>
+      <dd>200</dd>
+      <dd>300</dd>
+      <dd>400</dd>
+    </dl>
+    <dl class="height">
+      <dt>请选择高(px)：</dt>
+      <dd>200</dd>
+      <dd>300</dd>
+      <dd>400</dd>
+    </dl>
+      <div>
+        <a href="javascript:;" title="恢复" id="reset">恢复</a>
+        <a href="javascript:;" title="确定" id="submit">确定</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="style.js"></script>
+  <!-- <script src="demo.js"></script> -->
+
+</body>
+</html>

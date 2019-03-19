@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>箭头函数</title>
+</head>
+<body>
+
+	<script>
+
+	// 语法	() => { s}
+
+	var f = () =>{
+		console.log(123)
+	}
+	f();
+
+	// 1、没有参数
+	// var add = () =>2;  //这种写法 2就是返回值
+	// console.log(add) //2
+
+	// 2、只有一个参数
+	// var add = a =>a+2;
+	// console.log(add(3)) //2+3 =5
+
+	// 3、传2个参数
+	// var add = (a,b) => a+b;
+	// console.log(add(2,4))
+
+	//神奇的写法如下 可以直接返回 括号内的
+	// var add = (a,b) => ({num:a+b});
+	// console.log(add(1,6)) // num:7
+
+	// 箭头函数
+	// 1、箭头函数的this绑定的是所定义的作用域
+	// 2、不能当做构造函数
+	// 3、不可以使用arguments对象
+	document.onclick = function(){
+		var that = this;
+		// setTimeout(function(){
+		// 	console.log(this); //window
+		// 	console.log(that); //document
+		// },1000)
+		// 箭头函数的this绑定的是所定义的作用域
+		setTimeout(()=>{
+			console.log(this); //document
+		},1000);
+		console.log(this); //document
+	}
+	
+	</script> 
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>全选并且鼠标移入变色</title>
+	<style>
+	.item{
+		background: #eee;
+		cursor: pointer;
+	}
+	</style>
+</head>
+
+<body>
+	<div class="content" id="content">
+		<div class="item">
+			<input type="checkbox">喜欢的东西就要争取
+		</div>
+		<div class="item">
+			<input type="checkbox">122222喜欢的东西就要争取
+		</div>
+		<div class="item">
+			<input type="checkbox">3333333喜欢的东西就要争取
+		</div>
+		<div class="item">
+			<input type="checkbox">41喜欢的东西就要争取
+		</div>
+		<div class="item">
+			<input type="checkbox">5678喜欢的东西就要争取
+		</div>
+	</div>
+		<input type="checkbox" id="all">全选
+	<script>
+	window.onload = function(){
+		var oCon = document.getElementById('content');
+		var aItem = oCon.getElementsByTagName('div');
+		var oAll = document.getElementById('all');
+		var temp = "";
+		var n =0;
+		var isSelect =false;
+		// var off = true;
+		oAll.onclick = function(){
+			if(!isSelect){
+				for(var i=0;i<aItem.length;i++){
+					var aInput= aItem[i].getElementsByTagName("input")[0];
+					aInput.checked = "checked";
+				}
+				isSelect = !isSelect;
+			}
+			else{
+				for(var i=0;i<aItem.length;i++){
+					var aInput= aItem[i].getElementsByTagName("input")[0];
+					aInput.checked = "";
+				}
+				isSelect = !isSelect;
+			}
+		}
+
+
+		for(var i = 0; i<aItem.length; i++){
+			(i%2)?aItem[i].style.background = "#b7cec5":aItem[i].style.background = "#c6c78a";
+			var aInput= aItem[i].getElementsByTagName("input")[0];
+			aInput.whichNum = i;
+			aInput.onclick = function(){
+				// alert(this.whichNum)
+				for(var i=0;i<aItem.length; i++){
+					var aInput= aItem[i].getElementsByTagName("input")[0];
+					if (aInput.checked) {
+						alert(1)
+					};
+				}
+				// if(this.checked){
+				// 	alert(1)
+				// }
+			}
+
+		}
+		
+		for(var i = 0; i<aItem.length; i++){
+			aItem[i].index = i;
+			aItem[i].off = true;
+			aItem[i].onclick = function(){
+				for(var i = 0; i<aItem.length; i++){
+					(i%2)?aItem[i].style.background = "#b7cec5":aItem[i].style.background = "#c6c78a";
+				}
+					temp = this.style.background;
+					this.style.background= "pink";
+				this.off = !this.off;
+			}
+			aItem[i].onmouseover = function(){
+				if(this.off){
+					temp = this.style.background;
+					this.style.background= "pink";
+				}
+			}
+			aItem[i].onmouseout = function(){
+				if (this.off) {
+					this.style.background= temp;
+				};
+			}
+		}
+	}
+
+	</script>
+</body>
+</html>

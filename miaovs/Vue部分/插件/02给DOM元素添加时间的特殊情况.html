@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ref获取Dom</title>
+</head>
+<body>
+    <div id="app">
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+    // 1、在组件的DOM部分，任意标签中 写上ref="xxx"
+    // 2、通过组件对象 this.$refs.xxx   获取到元素
+
+    // 子组件，供$refs获取
+
+
+    var TempComponent = {
+        template:`<div>
+            <input type="text" v-if="isShow" value="123" ref="input" />
+        </div>`,
+        data:function(){
+            return{
+                isShow:false,
+            }
+        },
+        mounted:function(){ //装载数据之后  
+            // 显示元素，并给与获取焦点
+            this.isShow=!this.isShow;
+
+            // 给input元素获取焦点
+            // this.$refs.input.focus();  //浏览器显示元素并未获取
+
+            // 我们希望vue真正渲染DOM到页面后才做的事。
+            this.$nextTick(function(){
+                 this.$refs.input.focus();
+            });
+        },
+    }
+
+    var App = {
+        components:{
+            'temp':TempComponent
+        },
+        data:function(){
+            return{
+                isExist: true
+            }
+        },
+        template:`<div>
+            <temp ref="tmp"></temp>
+            <button  ref="btn">我是按钮</button>
+        </div>`,
+        beforeCreate:function(){
+            // console.log(this.$refs.btn);
+        },
+        created:function(){
+            // console.log(this.$refs.btn);
+        },
+        beforeMount:function(){
+            // console.log(this.$refs.btn);
+        },
+        mounted:function(){ //此处才能获取this.$refs.btn元素
+            // console.log(this.$refs.btn);
+            console.log(this.$refs.tmp)
+        },
+    };
+    
+    // 属性：$refs 获取组件内的元素
+    // $parent：获取当前组件对象的父组件
+    // $children：获取子组件
+    // $root：获取new  Vue的实例  vm
+    // $el：获取组件对象的Dom元素
+
+    var vm = new Vue({
+        el:"#app",
+        components:{
+            app:App
+        },
+        template:`<app/>`
+    });
+    </script>
+</body>
+</html>

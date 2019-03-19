@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>点击修改段落成输入框</title>
+</head>
+<style>
+*{margin: 0;padding: 0;}
+.content{width: 300px;margin: 0 auto;border: 1px solid green;}
+	h2{
+		height: 34px;
+		line-height: 34px;
+		padding: 0 10px;
+		background: pink;
+		font-size: 16px;
+		font-weight: normal;
+	}
+	#list li{
+		height: 32px;
+		line-height: 32px;
+		padding: 0 10px;
+		border-bottom:1px solid orange;
+		background: #eee;
+		list-style: none;
+		cursor: pointer;
+	}
+	#list li:last-child{
+		border: 0;
+	}
+	#list li a,#list li input{
+		display: none;
+	}
+	#list li .active{
+		display: inline-block;
+	}
+</style>
+<body>
+	<div class="content">
+		<h2>分类名称</h2>
+		<ul id="list">
+			<li><span>妙味网络课堂</span><input type="text" value="妙味网络课堂"><a href="javacript::void(0)">保存</a><a href="javacript::void(0)">取消</a><a class="active" href="javacript::void(0)">编辑</a></li>
+			<li><span>喵喵实体课堂</span><a href="javacript::void(0)">编辑</a></li>
+		</ul>
+	</div>
+	<script>
+		window.onload = function(){
+			var oList = document.getElementById("list");
+			var aLi = oList.getElementsByTagName("li");
+			// var oLink = aLi[0];
+			// console.log(aLi)
+			for(var i=0; i<aLi.length; i++){
+				fn(aLi[i]);
+			}
+
+			function fn(i){
+				var oSpan = i.getElementsByTagName("span")[0];
+				var oInput = i.getElementsByTagName("input")[0];
+				var aLink = i.getElementsByTagName("a");
+				var save = aLink[0];
+				var edit = aLink[2];
+				var text = oSpan.innerHTML;
+
+				edit.onclick = function(){
+					oSpan.style.display = "none";
+					oInput.style.display = "inline-block";
+					edit.className="";
+					save.className="active"
+				}
+				save.onclick = function(){
+					oSpan.style.display = "inline-block";
+					oInput.style.display = "none";
+					edit.className="active";
+					save.className=""
+					oSpan.innerHTML = oInput.value;
+				}
+			}
+
+
+		}
+	</script>
+</body>
+</html>

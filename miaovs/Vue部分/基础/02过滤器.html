@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>过滤器</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+        // 1、过滤器可以给数据显示进行添油加醋
+        // 需求：原本显示的数据是abc……添油加醋以后翻转成 cba……
+        // 需求实现1、为了互动性更好。用input+v-modle获取数据到vue中
+        // 2、输出：{{内容|使用过滤器输出}}
+        var App = {
+            template: `<div>
+                <input type="text" v-model="myText"/>
+                {{ myText | reverse('英文版','!') }}
+            </div>`,
+            data: function(){
+                return {
+                    myText :''
+                }
+            },
+            //实现过滤器
+            filters:{
+                reverse:function(dataStr,lang,arg2){ //参数1就是传递的原数据   参数2以及以后的参数就是上述方法中传递的参数
+                    return lang+':'+dataStr.split('').reverse().join('')+arg2; 
+                    //return 就是显示的内容
+                }
+            }
+        };
+
+        // 全局过滤器  {{ 'xxx' | myreverse('arg1') }}
+        Vue.filter('myreverse',function(data,arg1){
+            return 'xxxx';
+        });
+
+         new Vue({
+            el: '#app',
+            // 声明子组件
+            components: {//声明要用的组件们 key是组件名，value是组件对象
+                app : App
+            },
+            template : '<app/>',
+        });
+
+    </script>
+
+</body>
+</html>

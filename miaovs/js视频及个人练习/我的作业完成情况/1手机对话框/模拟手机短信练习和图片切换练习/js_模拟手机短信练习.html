@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js-模拟手机短信练习</title>
+</head>
+<style>
+	#bcg {
+		width: 289px;
+		height: 594px;
+		margin: 0 auto;
+		background: #ccc;
+		border: 2px solid #000;
+		position: relative;
+	}
+	#div1 {
+		width: 237px;
+		height: 370px;
+		position: absolute;
+		top: 89px;
+		left: 26px;
+		background: #fff;
+		overflow: auto;
+	}
+	#content {
+		width: 237px;
+		height: 40px;
+		position: relative;
+		/*position: absolute;*/
+		left: 26px;
+		top: 457px;
+		border-top: 1px solid #bdcec6;
+		background: #f7f7f7;
+	}
+	#img1 {
+		width: 23px;
+		height: 23px;
+		position: absolute;
+		top: 10px;
+		left: 8px;
+		border: 1px solid #fff;
+	}
+	#btn1 {
+		width: 139px;
+		height: 26px;
+		position: absolute;
+		top: 5px;
+		left: 41px;
+	}
+	#btn2 {
+		width: 52px;
+		height: 31px;
+		font-size: 18px;
+		color: #8c8494;
+		position: absolute;
+		left: 184px;
+		top: 5px
+	}
+.left, .left img, .left p {
+	float: left;
+}
+
+.left {
+	width: 100%;
+}
+
+.left img {
+	margin: 6px auto auto 5px;
+}
+
+.left p {
+	background: #CBC5C5;
+}
+
+.right, .right img, .right p{
+	float: right;
+}
+
+.right{
+	width: 100%;
+}
+
+.right img {
+	margin: 6px auto auto 5px;
+}
+
+.right p {
+	background: #02EA2C;
+}
+</style>
+<script>
+	window.onload = function (){
+		var oDiv = document.getElementById('div1');
+		var oImg = document.getElementById('img1');
+		var oText = document.getElementById('btn1');
+		var oBtn = document.getElementById('btn2');
+		var arr = [ 'img/5.jpg' , 'img/6.jpg' ];
+		var num = 1 ;
+
+		oImg.onclick = function (){
+
+			if( num ){
+				num = 0 ;
+				oImg.src = arr[1];
+			} else {
+				oImg.src = arr[0];
+				num = 1 ;
+			};
+			
+		};
+
+		oBtn.onclick = function (){
+
+			if( oText.value == '' ){
+				alert('请输入');
+			} else if( num ){
+				oDiv.innerHTML = '<div class="left"><img src="img/5.jpg"><p>' + oText.value + '</p></div>' + oDiv.innerHTML;
+				oText.value = '';
+			} else {
+				oDiv.innerHTML = '<div class="right"><img src="img/6.jpg"><p>' + oText.value + '</P></div>' + oDiv.innerHTML;
+				oText.value = '';
+			};
+		};
+	};
+
+</script>
+<body>
+	<div id="bcg">
+		<div id="div1"></div>
+		<div id="content">
+			<img id="img1" src="img/5.jpg" alt="">
+			<input id="btn1" type="text">
+			<input id="btn2" type="button" value="发送">
+		</div>
+	</div>
+</body>
+</html>

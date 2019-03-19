@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>slot具名插槽</title>
+</head>
+<body>
+    <div id="app"></div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+        var MySlot = {
+            // slot是留坑，外部填入内容
+            template:`<li>
+             以下预留第一个坑
+             <slot name= 'one'></slot>
+             <hr/>
+             以下是预留的第二个坑
+             <slot name ='two'></slot>
+            </li>`
+        }
+        Vue.component('my-slot',MySlot);    
+        // 总结：slot是父组件传递的dom结构
+        // vue提供的内置组件<slot></slot>
+        // 入口组件
+        var App = {
+            template: `<div>
+                <ul>
+                    <my-slot>
+                        <h1 slot="one">我是1，对应第一个坑</h1>
+                        <h1 slot="two">我是2，对应第二个坑</h1>
+                        <button>点击吧</button>
+                    </my-slot>
+                </ul>
+            </div>`
+        };
+
+         new Vue({
+            el: '#app',
+            components: {
+                app : App
+            },
+            template : '<app/>',
+        });
+
+    </script>
+
+</body>
+</html>

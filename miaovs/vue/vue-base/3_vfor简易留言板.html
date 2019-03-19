@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>建议留言板</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+       <input type="text" v-model="val">
+       <input type="button" value="发送" @click="sendMsg">
+       {{val}}
+       <ul>
+           <li v-for="(item,index) in list">{{item.title}}</li>
+       </ul>
+    </div>
+
+    <script>
+        /*
+            数组方法：
+            push() pop()
+        */
+        let list = [
+            // {
+            //     id:123,
+            //      title:'今天开心'
+            //  },
+            //  {
+            //     id:456,
+            //     title:'今天不不不开心'
+            //  }
+        ];
+
+        var vm = new Vue({
+            el:'#app',
+            data: function(){
+                return {
+                    val:'',
+                    list
+                }
+            },
+            methods:{
+                sendMsg() {
+                    this.list.push({
+                        id:Date.now(),
+                        title:this.val
+                    });
+                    this.val ="";
+                }
+            }
+        });
+        //模拟的请求时间
+        // setTimeout(function(){
+        //     vm.list = [
+        //         {
+        //             id:123,
+        //              title:'今天开心'
+        //          },
+        //          {
+        //             id:456,
+        //             title:'今天不不不开心'
+        //          }
+        //     ];
+        // },2000)
+    </script>
+    
+</body>
+</html>

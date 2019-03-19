@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>数组响应式变化</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{list}}</p>
+    </div>
+
+    <script>
+        //数据劫持  转成 getter/setter
+        var vm = new Vue({
+            el:'#app',
+            data: function(){ //只有计划好的数据才会作出响应(reactive)
+                return {
+                    list:[1,2,3]
+                }
+            }
+        });
+
+        //这是变异的push方法
+        /*
+            提供了观察数组的编译方法，使用这些方法将会触发视图更新
+            push()/pop()/shift()/unshift()/splice()/sort()/reverse()
+        */
+        vm.list.push(123);
+
+    </script>
+</body>
+</html>

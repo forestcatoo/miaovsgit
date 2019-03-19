@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>解构赋值</title>
+</head>
+<body>
+
+	<script>
+		let arr = [1,2,3,4];
+		
+		// 常规写法
+		// let a = arr[0];
+		// let b = arr[1];
+		// let c = arr[2];
+
+		// 解构   
+		var [a,b,c,d,e='默认值'] = [1,2,3,4]; //会显示默认值 
+		var [a,b,c,d,e='默认值'] = [1,2,3,4,5]; //会显示5
+
+		console.log(a);
+
+		// 对象解构
+		var miaov ={
+			fn:function(){},
+			add:function(){alert(1)},
+			isFunction:function(){}
+		}
+
+		// miaov.add();
+		// miaov.fn();
+		// miaov.isFunction(); //传统调用函数
+
+		let {add,isFunction,isArray=function(){alert(3) }} = miaov; //解构赋值
+		console.log(add);
+		console.log(isArray)
+
+	</script>
+</body>
+</html>

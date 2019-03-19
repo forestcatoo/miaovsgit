@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>对象的相应数据变化</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+      <p>{{msg}}</p>
+      <p>{{miaov.ketang}}</p>
+      <p>{{miaov.org}}</p>
+      <p>{{miaov.wode}}</p>
+      <p>{{miaov.hebing}}</p>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data: function(){ //reactive ，只有计划好的数据才会作出响应
+                return {
+                    msg:'hello',
+                    miaov:{ 
+                        org:'12345'
+                    }
+                }
+            }
+        });
+      //vm.miaov.wode = '我是新加的';  //不能加上，因为对象的数据里面没有这一项的初始值
+        
+        //调用Vue的静态方法
+        //Vue.set(target,prop,value)
+        /*setTimeout(function(){
+            Vue.set(vm.miaov,'ketang','我是新加的')
+        },2000);*/
+
+        // 调用实例上的方法
+        //vm.$set(vm.miaov,'ketang','我是新加的2')
+
+        //改写属性的值，重新赋值
+        //vm.miaov={ketang:'新的'} //会覆盖实例内对象上原来的属性，如 org
+    
+        vm.miaov = Object.assign({},vm.miaov,{hebing:'我是合并的属性',ketang:'我是课堂'})
+
+    </script>
+</body>
+</html>

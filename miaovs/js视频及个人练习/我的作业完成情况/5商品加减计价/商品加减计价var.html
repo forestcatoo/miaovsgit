@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>函数传参</title>
+</head>
+<body>
+    <ul id="list">
+        <li>
+            <input type="button" value="-">
+            <strong>0</strong>
+            <input type="button" value="+">
+            单价：<em>14元</em>
+            小计：<span>0元</span>
+        </li>
+           <li>
+            <input type="button" value="-">
+            <strong>0</strong>
+            <input type="button" value="+">
+            单价：<em>22.5元</em>
+            小计：<span>0元</span>
+        </li>
+           <li>
+            <input type="button" value="-">
+            <strong>0</strong>
+            <input type="button" value="+">
+            单价：<em>111元</em>
+            小计：<span>0元</span>
+        </li>
+        <li>
+            <input type="button" value="-">
+            <strong>0</strong>
+            <input type="button" value="+">
+            单价：<em>8元</em>
+            小计：<span>0元</span>
+        </li>
+        <li>
+            <input type="button" value="-">
+            <strong>0</strong>
+            <input type="button" value="+">
+            单价：<em>11元</em>
+            小计：<span>0元</span>
+        </li>
+    </ul>
+    <p>
+        商品合计共：<span id="kind">0</span>件，共花费了<span id="total">0</span>元，最贵的商品单价是<span id="most">0</span>元
+    </p>
+
+    <script>
+        window.onload=function(){
+            var oUl = document.getElementById("list");
+            var aLi = oUl.getElementsByTagName("li");
+            var aStrong = oUl.getElementsByTagName("strong");
+            var aEm = oUl.getElementsByTagName("em");
+            var aSpan = oUl.getElementsByTagName("span");
+            var oKind = document.getElementById("kind");
+            var oTotal = document.getElementById("total");
+            var oMost = document.getElementById("most");
+            var arr=[];
+            // fn1(aLi[0]);fn1(aLi[1]); fn1(aLi[2]);
+            // 避免多次重复的调用函数，可以使用循环让其自动根据索引调用
+            for(var i=0; i<aLi.length;i++){
+                fn1(aLi[i]);
+            }
+
+            function count(){
+                var nkind=0,ntotal=0,nmost=0,temp=0;
+                for(var i=0;i<aStrong.length;i++){
+                    nkind +=parseFloat(aStrong[i].innerHTML);
+                    ntotal += parseFloat(aSpan[i].innerHTML);
+                    if (aStrong[i].innerHTML!=0) {
+                        if (parseFloat(aEm[i].innerHTML)>temp) {
+                            temp = parseFloat(aEm[i].innerHTML);
+                        }
+                    }
+                }
+                oKind.innerHTML=nkind;
+                oTotal.innerHTML=ntotal
+                oMost.innerHTML=temp;
+
+            }
+            function fn1(oLi){
+                var aBtn = oLi.getElementsByTagName("input");
+                var oStrong = oLi.getElementsByTagName("strong")[0];
+                var oEm = oLi.getElementsByTagName("em")[0];
+                var oSpan = oLi.getElementsByTagName("span")[0];
+                var n1= oStrong.innerHTML; //'0' ==> 可以用Number()转换为number类型
+                var n2 = parseFloat(oEm.innerHTML); //'12.5元'==>12.5
+                 oSpan.innerHTML = n1*n2+"元";
+
+                aBtn[1].onclick = function(){
+                    n1 ++;
+                    oStrong.innerHTML = n1;
+                    oSpan.innerHTML = n1*n2+"元";
+                    count();
+                }
+                aBtn[0].onclick = function(){
+                    n1 --
+                    if (n1<0) {
+                        n1 = 0;
+                    }
+                    oStrong.innerHTML = n1;
+                    oSpan.innerHTML = n1*n2+"元";
+                    count();
+                }
+            }
+        }
+    </script>
+</body>
+</html>

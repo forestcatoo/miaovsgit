@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>模拟发信息</title>
+<style type="text/css">
+body{background:#f0f0f0;}
+.scroll::-webkit-scrollbar{width:6px; height:6px; background:#f5f5f5;}
+.scroll::-webkit-scrollbar-track, .scroll::-webkit-scrollbar-track-piece{background:-webkit-gradient(linear,left); width:10px; height:10px;}
+.scroll::-webkit-scrollbar-thumb{border-radius:6px; background:#d9d9d9;}
+.scroll::-webkit-scrollbar-thumb:horizontal{border-width:6px 0; border-style:solid; border-color:#fefefe; border-radius:6px; background:#d9d9d9;}
+.scroll::-webkit-scrollbar-thumb:hover{background:#bdbdbd;}
+.scroll::-webkit-scrollbar-thumb:active{background:#8e8e8e;}
+#iphone-bd{width:380px; height:749px; background:url(images/iphone.png) no-repeat; margin:0 auto; overflow:hidden;}
+#iphone-bd .iphoen-box{width:320px; height:482px; background:#fff; margin:132px 30px 135px 32px;}
+.sms-bd{width:100%; height:432px; overflow-x:hidden;}
+.sms-bd .sms-bd-item{padding:10px 12px; overflow:hidden;}
+.sms-ipt{width:auto; height:40px; padding:4px; border-top:1px solid #b2b2b2; background:#f0f0f0; position:relative;}
+.sms-ipt .avator{width:36px; height:36px; position:absolute; left:6px; top:6px; cursor:pointer; border:1px solid #dadbdb; border-radius:6px;}
+.sms-ipt .inputbox{width:198px; height:36px; left:50px; top:6px; position:absolute; border:1px solid #dadbdb; border-radius:6px; background:#fff;}
+.sms-ipt .inputbox #txtCon{border:0; width:192px; height:26px; padding:5px 3px; border-radius:6px; outline:none;}
+.sms-ipt .btn-send{width:56px; height:36px; line-height:36px; background:#f0f0f0; border:1px solid #dadbdb; border-radius:6px; position:absolute; right:6px; top:6px; cursor:pointer; text-align:center;}
+.sms-ipt .btn-send:hover{background:#dadbdb;}
+
+.mr-bd,.ms-bd{width:100%; margin-bottom:6px; overflow:hidden;}
+.mr-bd .txt-box,.ms-bd .txt-box{ border:1px solid #ccc; background:#ddd; padding:6px 5px; display:inline-block; border-radius:5px; max-width:230px; position:relative;}
+.mr-bd img{float:left;}
+.mr-bd .txt-box{float:left; margin-left:5px;}
+.ms-bd img{float:right;}
+.ms-bd .txt-box{float:right; margin-right:5px;}
+.mr-bd .txt-box .arrow,.ms-bd .txt-box .arrow{position:absolute;  top:6px; font:normal 12px/21px Simsun;}
+.mr-bd .txt-box .arrow span,.ms-bd .txt-box .arrow span{position:absolute; color:#b9babb;}
+.mr-bd .txt-box .arrow i,.ms-bd .txt-box .arrow i{position:absolute;  font-style:normal; color:#ddd;}
+.mr-bd .txt-box .arrow{left:-6px;}
+.mr-bd .txt-box .arrow i{left:1px;}
+.ms-bd .txt-box .arrow{right:4px;}
+.ms-bd .txt-box .arrow i{right:-11px;}
+</style>
+<script>
+
+</script>
+</head>
+
+<body>
+<div id="iphone-bd">
+        <div class="iphoen-box">
+            <div class="sms-bd scroll">
+                <div id="smsBox" class="sms-bd-item">
+            </div>
+        </div>
+        <div class="sms-ipt">
+                <div class="avator">
+                    <img id="picAvator" src="images/ms.png">
+            </div>
+            <div class="inputbox">
+                    <input type="text" id="txtCon">
+            </div>
+            <div id="btnSend" class="btn-send">发送</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="message">
+        <p>{{message}}</p>
+        <p>{{reverseMessage}}</p>
+    </div>
+
+    <script>
+        /*
+            计算属性：
+                以来data中的数据，data中的数据发生变化。计算属性会重新计算
+            
+
+        */
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                message:'miaov_ketang',
+            },
+            computed:{
+               reverseMessage(){
+                    console.log(this.message);
+                    console.log("我执行了")
+                    return this.message.split("").reverse().join("");
+                }
+            }
+        });
+    </script>
+</body>
+</html>
